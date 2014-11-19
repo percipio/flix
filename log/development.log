@@ -69,3 +69,143 @@ Migrating to CreateReviews (20121217184756)
   [1m[35m (0.0ms)[0m  begin transaction
   [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "reviews" ("comment", "created_at", "movie_id", "name", "stars", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["comment", "It's a bird, it's a plane, it's a blockbuster!"], ["created_at", "2014-11-19 01:57:52.493269"], ["movie_id", 2], ["name", "Elvis Mitchell"], ["stars", 5], ["updated_at", "2014-11-19 01:57:52.493269"]]
   [1m[35m (2.1ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (12.8ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20141119023153)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "email" varchar(255), "password_digest" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20141119023153"]]
+  [1m[36m (6.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reviews_on_movie_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reviews_on_movie_id' AND type='index'
+[0m
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM schema_migrations[0m
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE "users"."email" IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('john@doe.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-11-19 03:19:38.175472"], ["email", "john@doe.com"], ["name", "Joe Doe"], ["password_digest", "$2a$10$DPZR1b6dj2x2oFkzzfwmy.ACgrTBu.UP6wI3dtmPEvWtgrB43ubLK"], ["updated_at", "2014-11-19 03:19:38.175472"]]
+  [1m[36m (6.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE (LOWER("users"."email") = LOWER('john@doe.com') AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE (LOWER("users"."email") = LOWER('john@doe.com') AND "users"."id" != 1) LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('curly@example.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-11-19 03:22:19.398972"], ["email", "curly@example.com"], ["name", "Curly"], ["password_digest", "$2a$10$3XfU9X08WqbZKJXnVyGzP.U51xtYw4BlDXgksI4XDMgROO7HUva5C"], ["updated_at", "2014-11-19 03:22:19.398972"]]
+  [1m[36m (2.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'Curly@example.com' LIMIT 1
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."email" = 'urly@example.com' LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."email" = 'curly@example.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('curly@example.com') LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users"  WHERE LOWER("users"."email") = LOWER('larry@example.com') LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-11-19 03:24:31.899505"], ["email", "larry@example.com"], ["name", "Larry"], ["password_digest", "$2a$10$hIDG36hMF6pTZJsK9hgQu.V96RKDw.lPESEOAB3e3XQhxMZX9nke6"], ["updated_at", "2014-11-19 03:24:31.899505"]]
+  [1m[36m (6.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users"
+
+
+Started GET "/" for 127.0.0.1 at 2014-11-19 11:43:41 -0600
+  [1m[36mActiveRecord::SchemaMigration Load (13.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (10.3ms)[0m  SELECT "movies".* FROM "movies"  WHERE (released_on <= '2014-11-19 17:43:42.512852')  ORDER BY "movies"."released_on" DESC
+  Rendered movies/index.html.erb within layouts/application (150.8ms)
+  Rendered layouts/_header.html.erb (0.7ms)
+  Rendered layouts/_flashes.html.erb (0.5ms)
+  Rendered layouts/_sidebar.html.erb (0.5ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 1728ms (Views: 1649.0ms | ActiveRecord: 10.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/movies.css?body=1" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/elements.css?body=1" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/normalize.css?body=1" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/buttons.css?body=1" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/layout.css?body=1" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/forms.css?body=1" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/movies.js?body=1" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/reviews.js?body=1" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/ironman.jpg" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/catwoman.jpg" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/superman.jpg" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/spiderman.jpg" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/batman.jpg" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/background.jpg" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/logo.png" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/arrow.png" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/assets/add.png" for 127.0.0.1 at 2014-11-19 11:43:44 -0600
+
+
+Started GET "/movies/new" for 127.0.0.1 at 2014-11-19 11:43:46 -0600
+Processing by MoviesController#new as HTML
+  Rendered shared/_errors.html.erb (14.6ms)
+  Rendered movies/_form.html.erb (64.1ms)
+  Rendered movies/new.html.erb within layouts/application (66.1ms)
+  Rendered layouts/_header.html.erb (0.5ms)
+  Rendered layouts/_flashes.html.erb (0.3ms)
+  Rendered layouts/_sidebar.html.erb (5.1ms)
+  Rendered layouts/_footer.html.erb (0.4ms)
+Completed 200 OK in 173ms (Views: 171.8ms | ActiveRecord: 0.0ms)
