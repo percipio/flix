@@ -1,0 +1,17 @@
+<article id="user">
+  <header>
+    <%= profile_image_for(@user) %>
+    <h1><%= @user.name %></h1>
+    <h2><%= mail_to(@user.email) %></h2>
+    <h3>Member Since: <%= @user.created_at.strftime("%B %Y") %></h3>
+  </header>
+  <footer>
+  <nav>
+    <%= link_to 'Edit Account', edit_user_path(@user), class: 'button' %>
+    <%= link_to 'Delete Account', @user, 
+				method: :delete,
+				data: { confirm: 'Are you sure? This is permanent! Your account will be gone forever!' },
+    			class: 'button' %>
+  </nav>
+</footer>
+</article>

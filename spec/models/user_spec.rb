@@ -75,7 +75,7 @@ describe "A user" do
   end
 
   it "requires a password and matching password confirmation when creating" do
-    user = User.create!(user_attributes(password: "secret", password_confirmation: "secret"))
+    user = User.create!(user_attributes(password: "secretsecret", password_confirmation: "secretsecret"))
 
     expect(user.valid?).to eq(true)
   end
