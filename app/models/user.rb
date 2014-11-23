@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   
   validates :password, length: { minimum: 4, allow_blank: true }
 
-  def self.authenticate(email, password)
-    user = User.find_by(email: email)
+  def self.authenticate(email_or_username, password)
+    user = User.find_by(email: email_or_username) || User.find_by(username: email_or_username)
     user && user.authenticate(password)
   end
                       

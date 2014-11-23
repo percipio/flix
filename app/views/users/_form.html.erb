@@ -19,12 +19,17 @@
         <%= f.password_field :password_confirmation, size: 40 %>
       </li>
     </ol>
-    <p>
-      <% if @user.new_record? %>
+    <% if @user.new_record? %>
+      <p>
         <%= f.submit "Create Account" %>
-      <% else %>
+      </p>
+      <p>
+        Already a member? <%= link_to "Sign In", signin_path %>
+      </p>
+    <% else %>
+      <p>
         <%= f.submit "Update Account" %>
-      <% end %>
-    </p>
+      </p>
+    <% end %>
   </fieldset>
 <% end %>

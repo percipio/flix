@@ -24,4 +24,9 @@ private
 
   helper_method :current_user?
 
+  def current_user_admin?
+    current_user && current_user.admin?
+  end
+
+  helper_method :current_user_admin?
 end
