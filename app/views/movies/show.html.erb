@@ -12,7 +12,16 @@
   <h3 class="no-rule">
     <%= @movie.rating %> &bull; <%= @movie.duration %> 
   </h3>
-  
+  <% if @fans.any? %>
+    <h3><%= pluralize(@fans.size, 'fan') %></3>
+    <ul>
+      <% @fans.each do |user| %>
+        <li>
+          <%= link_to user.name, user %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
   <h3>Cast</h3>
   <p>
     <%= @movie.cast %>
