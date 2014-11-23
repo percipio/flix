@@ -11,10 +11,6 @@
         <%= f.email_field :email, size: 40 %>
       </li>
       <li class="required">
-        <%= f.label :username %>
-        <%= f.text_field :username, size: 40, placeholder: "Alphanumeric characters only!" %>
-      </li>
-      <li class="required">
         <%= f.label :password %>
         <%= f.password_field :password, size: 40 %>
       </li>
@@ -29,9 +25,6 @@
       <% else %>
         <%= f.submit "Update Account" %>
       <% end %>
-    </p>
-    <p>
-      Already a member? <%= link_to 'Sign In!', signin_path %>
     </p>
   </fieldset>
 <% end %>
