@@ -12,8 +12,17 @@
   <h3 class="no-rule">
     <%= @movie.rating %> &bull; <%= @movie.duration %> 
   </h3>
+
+  <% if current_user %>
+    <% if @current_favorite %> 
+      <%= button_to "Unfave", movie_favorite_path(@movie, @current_favorite), method: :delete, class: "button unfave" %>
+    <% else %>
+      <%= button_to "Fave", movie_favorites_path(@movie), class: "button fave" %>
+    <% end %>
+  <% end %>
+  
+  <h3><%= pluralize(@fans.size, 'fan') %></3>
   <% if @fans.any? %>
-    <h3><%= pluralize(@fans.size, 'fan') %></3>
     <ul>
       <% @fans.each do |user| %>
         <li>
