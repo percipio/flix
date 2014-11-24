@@ -10752,3 +10752,6 @@ Migrating to CreateFavorites (20141123213340)
   [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "favorites" ON "users"."id" = "favorites"."user_id" WHERE "favorites"."movie_id" = ?  [["movie_id", 1]]
   [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "favorites" ON "users"."id" = "favorites"."user_id" WHERE "favorites"."movie_id" = ?[0m  [["movie_id", 1]]
   [1m[35mFavorite Load (0.3ms)[0m  SELECT "favorites".* FROM "favorites"  WHERE "favorites"."user_id" = ?  [["user_id", 9]]
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies"   ORDER BY "movies"."id" DESC LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "reviews" ON "users"."id" = "reviews"."user_id" WHERE "reviews"."movie_id" = ?  [["movie_id", 6]]
