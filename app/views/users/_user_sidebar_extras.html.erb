@@ -1,0 +1,12 @@
+<h3>Favorite Movies</h3>
+<% if @favorite_movies.any? %>
+  <ul>
+    <% @favorite_movies.each do |movie| %>
+      <li>
+        <%= link_to movie.title, movie %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No Favorites yet</p>
+<% end %>
