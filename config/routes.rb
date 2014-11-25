@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  resources :genres
+  root "movies#index"
 
 	get "signup" => "users#new"
 	get "signin" => "sessions#new"
-	resource :session
-  root "movies#index"  
 
+  get "movies/filter/:scope" => "movies#index", as: :filtered_movies
+
+  resource :session
+  resources :genres
   resources :users
   resources :movies do
     resources :reviews
