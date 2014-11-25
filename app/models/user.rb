@@ -9,8 +9,11 @@ class User < ActiveRecord::Base
   validates :email, presence: true,                   
                     format: /\A\S+@\S+\z/,
                     uniqueness: { case_sensitive: false }
-  
   validates :password, length: { minimum: 4, allow_blank: true }
+
+  scope :by_name, -> { order(:name) }
+  scope :not_admins, -> { by_name.where(admin: false) }
+  scope :admins, -> { by_name.where(admin: true) }
 
   def self.authenticate(email_or_username, password)
     user = User.find_by(email: email_or_username) || User.find_by(username: email_or_username)

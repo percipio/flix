@@ -16409,3 +16409,38 @@ Processing by MoviesController#show as HTML
   Rendered layouts/_sidebar.html.erb (0.2ms)
   Rendered layouts/_footer.html.erb (0.1ms)
 Completed 200 OK in 95ms (Views: 91.6ms | ActiveRecord: 0.6ms)
+  [1m[36mMovie Load (1.6ms)[0m  [1mSELECT "movies".* FROM "movies"  WHERE (released_on <= '2014-11-24 22:31:02.977385')  ORDER BY "movies"."released_on" DESC[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies"  WHERE (total_gross >= 300000000)  ORDER BY "movies"."total_gross" DESC
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT "movies".* FROM "movies"  WHERE (total_gross < 50000000)  ORDER BY "movies"."total_gross" ASC[0m
+  [1m[35mMovie Load (0.6ms)[0m  SELECT "movies".* FROM "movies"  WHERE (total_gross >= 300000000)  ORDER BY "movies"."total_gross" DESC
+  [1m[36mMovie Load (1.2ms)[0m  [1mSELECT "movies".* FROM "movies"  WHERE (total_gross >= 300000000)  ORDER BY "movies"."total_gross" DESC[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies"  WHERE (total_gross >= 300000000)  ORDER BY "movies"."total_gross" DESC
+  [1m[36mMovie Load (0.5ms)[0m  [1mSELECT "movies".* FROM "movies"  WHERE (released_on <= '2014-11-24 23:01:59.214796') AND (total_gross >= 300000000)  ORDER BY "movies"."released_on" DESC, "movies"."total_gross" DESC[0m
+  [1m[35mMovie Load (0.5ms)[0m  SELECT "movies".* FROM "movies"  WHERE (released_on <= '2014-11-24 23:02:57.514893') AND (total_gross < 50000000)  ORDER BY "movies"."released_on" DESC, "movies"."total_gross" ASC
+  [1m[36mMovie Load (0.5ms)[0m  [1mSELECT "movies".* FROM "movies"  WHERE (released_on > '2014-11-25 01:20:55.131864')  ORDER BY "movies"."released_on" ASC[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies"  WHERE (released_on > '2014-11-25 01:23:57.677832')  ORDER BY "movies"."released_on" ASC
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "movies"  WHERE (released_on > '2014-11-25 01:25:41.616468')[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "movies"  WHERE (released_on > '2014-11-25 01:25:48.391433')
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "movies" SET "released_on" = ?, "updated_at" = ? WHERE "movies"."id" = 3  [["released_on", "2015-09-20"], ["updated_at", "2014-11-25 01:26:23.814676"]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies"  WHERE "movies"."id" = ? LIMIT 1  [["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "movies" SET "released_on" = ?, "updated_at" = ? WHERE "movies"."id" = 6  [["released_on", "2015-11-20"], ["updated_at", "2014-11-25 01:26:37.955136"]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies"  WHERE (released_on > '2014-11-25 01:26:44.541960')  ORDER BY "movies"."released_on" ASC
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "movies"  WHERE (released_on > '2014-11-25 01:26:49.004729')[0m
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies"  WHERE (released_on <= '2014-11-25 01:31:02.465286') AND "movies"."rating" = 'PG-13'  ORDER BY "movies"."released_on" DESC
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT "movies".* FROM "movies"  WHERE (released_on <= '2014-11-25 01:31:06.569406') AND "movies"."rating" = 'PG'  ORDER BY "movies"."released_on" DESC[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "movies"  WHERE (released_on <= '2014-11-25 01:31:10.519539') AND "movies"."rating" = 'PG'
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "movies"  WHERE (released_on <= '2014-11-25 01:31:15.357051') AND "movies"."rating" = 'PG-13'[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies"  WHERE (released_on <= '2014-11-25 01:31:28.719830') AND "movies"."rating" = 'PG-13' AND (released_on <= '2014-11-25 01:31:28.720331') AND (total_gross >= 300000000)  ORDER BY "movies"."released_on" DESC, "movies"."total_gross" DESC
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "movies"  WHERE (released_on <= '2014-11-25 01:31:34.232406') AND "movies"."rating" = 'PG-13' AND (released_on <= '2014-11-25 01:31:34.232722') AND (total_gross >= 300000000)[0m
+  [1m[35mMovie Load (0.6ms)[0m  SELECT  "movies".* FROM "movies"  WHERE (released_on <= '2014-11-25 01:34:38.717749')  ORDER BY "movies"."released_on" DESC LIMIT 5
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE (released_on <= '2014-11-25 01:34:47.446879')  ORDER BY "movies"."released_on" DESC LIMIT 2[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "movies"  WHERE (released_on <= '2014-11-25 01:34:52.071593') LIMIT 2) subquery_for_count
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "movies"  WHERE (released_on <= '2014-11-25 01:34:55.884296') LIMIT 4) subquery_for_count[0m
+  [1m[35mMovie Load (0.3ms)[0m  SELECT  "movies".* FROM "movies"  WHERE (released_on <= '2014-11-25 01:35:17.871485') AND (released_on <= '2014-11-25 01:35:17.871803') AND (total_gross >= 300000000)  ORDER BY "movies"."released_on" DESC, "movies"."total_gross" DESC LIMIT 4
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT  "movies".* FROM "movies"  WHERE (released_on <= '2014-11-25 01:35:22.671866') AND (released_on <= '2014-11-25 01:35:22.672213') AND (total_gross < 50000000)  ORDER BY "movies"."released_on" DESC, "movies"."total_gross" ASC LIMIT 4[0m
