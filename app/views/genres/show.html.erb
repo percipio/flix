@@ -1,0 +1,6 @@
+<h1><%= @genre.name %> Movies</h1>
+<% if @movies.present? %>
+    <%= render 'shared/movie_list' %>
+<% else %>
+    <p>No movies in this Genre yet.</p>
+<% end %>

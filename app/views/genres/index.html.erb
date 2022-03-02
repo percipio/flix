@@ -1,0 +1,8 @@
+<h1>Genres</h1>
+<ul>
+    <% @genres.each do |genre| %>
+        <li><%= link_to genre.name, genre_movies_path(genre.name) %> (<%= genre.movies.size %>)</li>
+    <% end %>
+    <hr/>
+    <li><%= link_to 'Add Genre', new_genre_path %></li>
+</ul>
