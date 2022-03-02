@@ -187,9 +187,3 @@ Movie.create!([
     image_file_name: "wonder-woman.png"
   }
 ])
-
-movie = Movie.find_by(title: "Captain Marvel")
-
-movie.reviews.create!(stars: 5, comment: "Awesome!")
-movie.reviews.create!(stars: 4, comment: "Great!")
-movie.reviews.create!(stars: 3, comment: "Spilled my popcorn!")
