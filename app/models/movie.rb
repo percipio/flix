@@ -27,8 +27,8 @@ class Movie < ApplicationRecord
   scope :upcoming, -> {where("released_on > ?", Time.now).order(released_on: :desc)}
   scope :recent, ->(max=5) {released.limit(max)}
 
-  scope :flops, -> {released.where("total_gross < 225000000").order(total_gorss: :desc)}
-  scope :hits, -> {released.where("total_gross >= 300000000").order(total_gorss: :desc)}
+  scope :flops, -> {released.where("total_gross < 225000000").order(total_gross: :desc)}
+  scope :hits, -> {released.where("total_gross >= 300000000").order(total_gross: :desc)}
 
   scope :grossed_less_than, ->(amount) {released.where("total_gross < ?", amount)}
   scope :grossed_graeter_than, ->(amount) {released.where("total_gross > ?", amount)}
