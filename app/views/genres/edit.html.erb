@@ -2,4 +2,4 @@
 
 <%= render 'form', genre: @genre %>
 
-<%= button_to 'Delete Genre', genre_path(@genre), method: :delete, data: { confirm: "Are you sure?"} %>
+<%= link_to 'Delete Genre', genre_path(@genre), method: :delete, data: { confirm: "Are you sure?"} %>

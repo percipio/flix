@@ -1,5 +1,6 @@
 class GenresController < ApplicationController
     before_action :set_genre, except: [:index, :new, :create]
+    before_action :require_admin, except: [:index, :show]
 
     def index
         @genres = Genre.all.order("name asc")
@@ -45,6 +46,6 @@ private
     end
 
     def set_genre
-        @genre = Genre.find(params[:id])
+        @genre = Genre.find_by(name: params[:id])
     end
 end

@@ -2,5 +2,6 @@
 <% if current_user_admin? %>
   <section class="admin">
     <%= link_to 'Add New Movie', new_movie_path, class: 'button' %>
+    <%= link_to 'Edit Genre', edit_genre_path(params[:genre]), class: 'button' if params[:genre].present? %>
   </section>
 <% end %>
